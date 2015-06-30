@@ -1,5 +1,6 @@
 site_name: CrystalExpress Documentation - iOS
 theme: readthedocs
+site_favicon: favicon.ico
 pages:
 - Home: index.md
 - Integration guide:

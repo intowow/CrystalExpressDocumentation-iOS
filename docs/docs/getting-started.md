@@ -11,32 +11,27 @@ pod "CrystalExpressSDK", '~> 1.2'
 - Here's a [sample project](https://github.com/roylo/CrystalExpressSample)
 
 ### Manual integration
-- In project build phases "Link Binary With Libraries", add CrystalExpressSDK-x.x.x.a static library
-> [CrystalExpressSDK-1.2.3](http://intowow-demo.oss-cn-beijing.aliyuncs.com/ios_manual_sdk%2FCrystalExpressSDK-CN-1.2.3.zip)
-
-- Add header file to your project
-- Make sure you have the following frameworks added in Build phases
-```
-Securty.framework
-CFNetwork.framework
-MessageUI.framework
-MobileCoreServices.framework
-SystemConfiguration.framework
-AdSupport.framework
-libz.dylib
-libc++.dylib
-CoreTelephony.framework
-CoreMedia.framework
-libsqlite3.dylib
-AVFoundation.framework
-libicucore.dylib
-```
-- Add `-ObjC` in TARGETS -> Build Settings -> Linking -> Other Linker Flags
-- Add the following files to your project
-```
-CrystalExpress.plist
-```
-- You can now start using CrystalExpress lib.
+1. In project build phases "Link Binary With Libraries", add CrystalExpressSDK-x.x.x.a static library
+    - [CrystalExpressSDK-1.2.3](http://intowow-demo.oss-cn-beijing.aliyuncs.com/ios_manual_sdk%2FCrystalExpressSDK-CN-1.2.3.zip)
+1. Add header file to your project
+1. Make sure you have the following frameworks added in Build phases
+    - Securty.framework
+    - CFNetwork.framework
+    - MessageUI.framework
+    - MobileCoreServices.framework
+    - SystemConfiguration.framework
+    - AdSupport.framework
+    - libz.dylib
+    - libc++.dylib
+    - CoreTelephony.framework
+    - CoreMedia.framework
+    - libsqlite3.dylib
+    - AVFoundation.framework
+    - libicucore.dylib
+1. Add `-ObjC` in TARGETS -> Build Settings -> Linking -> Other Linker Flags
+1. Add the following files to your project
+    - CrystalExpress.plist
+1. You can now start using CrystalExpress lib.
 
 ## Test CrystalExpress SDK
 - First initalize SDK
