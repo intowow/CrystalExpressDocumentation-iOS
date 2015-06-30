@@ -1,9 +1,14 @@
 site_name: CrystalExpress Documentation - iOS
 theme: readthedocs
 site_favicon: favicon.ico
+extra_css:
+- css/custom.css
 pages:
 - Home: index.md
 - Integration guide:
-  - 'Pre-Stage': 'docs/pre-stage.md'
-  - 'Getting Started': 'docs/getting-started.md'
-- '中文': 'docs/pre-stage.md'
+  - 'Setup and Requirements': 'docs/setup.md'
+  - 'AD integration':
+    - 'Initialization': 'docs/sdk-init.md'
+    - 'Splash AD': 'docs/splash-ad.md'
+    - 'Stream AD': 'docs/stream-ad.md'
+    - 'Content AD': 'docs/content-ad.md'
