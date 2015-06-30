@@ -3,4 +3,6 @@ theme: readthedocs
 pages:
 - Home: index.md
 - Integration guide:
-  - 'Before SDK integration': 'docs/BeforeSDKIntegration.md'
+  - 'Pre-Stage': 'docs/pre-stage.md'
+  - 'Getting Started': 'docs/getting-started.md'
+- '中文': 'docs/pre-stage.md'
