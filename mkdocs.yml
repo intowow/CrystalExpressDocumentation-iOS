@@ -1,0 +1,6 @@
+site_name: CrystalExpress Documentation - iOS
+theme: readthedocs
+pages:
+- Home: index.md
+- Integration guide:
+  - 'Before SDK integration': 'docs/BeforeSDKIntegration.md'
