@@ -2,8 +2,7 @@
 - CrystalExpress works on iOS 7.0 and above.
 
 ## Before SDK integration
-- Make sure you have get CrystalExpress.plist from Intowow.
-It will look like this.
+- Make sure you have get CrystalExpress.plist from Intowow. It will look like this.
     - If you don't have `Crystal_Id`, please contact Intowow to request one for you app.
 
 ```xml
@@ -19,8 +18,7 @@ It will look like this.
 
 ## Installation
 ### Using Cocoapods
-- We strongly recommand you to use Cocoapods to integrate with
-CrystalExpress.
+- We strongly recommand you to use Cocoapods to integrate with CrystalExpress.
 - Add the following code in Podfile
 ```
 pod "CrystalExpressSDK", '~> 1.2'
@@ -51,14 +49,3 @@ pod "CrystalExpressSDK", '~> 1.2'
 1. Add the following files to your project
     - CrystalExpress.plist
 1. You can now start using CrystalExpress lib.
-
-## Test CrystalExpress SDK
-- First initalize SDK
-```objc
-[I2WAPI initWithVerboseLog:YES isTestMode:NO];
-```
-
-- Check whether SDK is ready to serve
-```objc
-BOOL isSDKServing = [I2WAPI isAdServing];
-```

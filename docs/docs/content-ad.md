@@ -1,6 +1,5 @@
 ## Requirements
 - Content AD is designed for scrollView page.
-- Pair with streamView, not 1 content page.
 
 ## Init ContentADHelper
 Pair ContentADHelper with your streams, so initialize it in your stream viewController (or the class you init/manage detail page viewControllers), then assign it to detail page viewController.
@@ -86,7 +85,7 @@ Request content AD while you load detail page content with article unique id.
 }
 ```
 
-## Hook viewController & tableView events
+## Hook viewController & scrollView events
 ### Update scrollView state to allow helper check AD start/stop
 ```objc
 - (void)viewDidAppear:(BOOL)animated

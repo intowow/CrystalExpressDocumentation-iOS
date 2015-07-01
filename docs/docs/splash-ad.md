@@ -1,3 +1,6 @@
+## Requirements
+- App must support both portrait and landscape rotation.
+
 ## Init SplashADHelper
 We provided a helper class to make integration more easier, via SplashADHelper, you can easily request Splash ADs.
 ```objc
@@ -38,7 +41,9 @@ SplashADHelper will call delegate function and return a ready `SplashADInterface
         ...
     }];
 }
-
+```
+If request Splash AD fail, SplashADHelper will call this function and return the error.
+```objc
 - (void)SplashADDidFailToReceiveAdWithError:(NSError *)error viewController:(SplashADInterfaceViewController *)vc
 {
     NSLog(@"fail to request OPEN_SPLASH, reason:%@", error);

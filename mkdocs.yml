@@ -16,4 +16,5 @@ pages:
     - 'Register background task': 'docs/register-background-task.md'
     - 'Register background fetch': 'docs/register-background-fetch.md'
     - 'AD preview': 'docs/ad-preview.md'
+- Sample code: 'docs/sample-code.md'
 - Trouble shooting: 'docs/trouble-shooting.md'

@@ -1,5 +1,5 @@
 ## Requirements
-Stream ADs are designed for UITableView class
+- Stream ADs are designed for UITableViewController class
 
 ## Init streamADHelper
 - We provided a helper class to make stream AD integration easier, via StreamADHelper, you can request and manage stream ADs.
