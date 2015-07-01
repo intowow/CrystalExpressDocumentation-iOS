@@ -12,3 +12,8 @@ pages:
     - 'Splash AD': 'docs/splash-ad.md'
     - 'Stream AD': 'docs/stream-ad.md'
     - 'Content AD': 'docs/content-ad.md'
+  - 'SDK integration':
+    - 'Register background task': 'docs/register-background-task.md'
+    - 'Register background fetch': 'docs/register-background-fetch.md'
+    - 'AD preview': 'docs/ad-preview.md'
+- Trouble shooting: 'docs/trouble-shooting.md'

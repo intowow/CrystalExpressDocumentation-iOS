@@ -1,4 +1,4 @@
-### Request Splash AD via helper class
+## Init SplashADHelper
 We provided a helper class to make integration more easier, via SplashADHelper, you can easily request Splash ADs.
 ```objc
 // init splash helper
@@ -6,7 +6,11 @@ _splashHelper = [[SplashADHelper alloc] init];
 
 // set helper delegate
 [_splashHelper setDelegate:self];
+```
 
+## Request Splash AD
+Request splash AD is really simple, and you may controll the splash AD type while request.
+```objc
 // request AD with placement and mode
 [_splashHelper requestSplashADWithPlacement:@"OPEN_SPLASH" mode:CE_SPLASH_MODE_SINGLE_OFFER];
 ```
@@ -14,7 +18,7 @@ _splashHelper = [[SplashADHelper alloc] init];
 - `mode` can configure the splash AD type, we suggest to use `CE_SPLASH_MODE_SINGLE_OFFER` here
     - For more detail, please refer to the [API reference]()
 
-### SplashADHelper delegate
+## SplashADHelper delegate
 SplashADHelper will call delegate function and return a ready `SplashADInterfaceViewController` for you to present.
 ```objc
 #pragma mark - SplashADHelperDelegate
@@ -41,7 +45,7 @@ SplashADHelper will call delegate function and return a ready `SplashADInterface
 }
 ```
 
-### SplashAD ViewController delegate (Optional)
+## SplashAD ViewController delegate (Optional)
 You can hook `SplashADInterfaceViewController` related event for your needs.
 ```objc
 #pragma mark - SplashADViewControllerDelegate
@@ -68,3 +72,7 @@ You can hook `SplashADInterfaceViewController` related event for your needs.
 }
 ```
 **Notice** There are both portrait and landscape Splash AD support in our SDK, make sure your app support that kind of rotation before you serving ADs.
+***
+More information
+
+- [API reference]()

@@ -1,5 +1,5 @@
 ## Requirements
-- CrystalExpress works on iOS 6.0 and above.
+- CrystalExpress works on iOS 7.0 and above.
 
 ## Before SDK integration
 - Make sure you have get CrystalExpress.plist from Intowow.

@@ -6,6 +6,17 @@ Stream ADs are designed for UITableView class
 - Initial streamADHelper in the pre stage (ex. `viewDidLoad`)
 - `preroll` may prepare 1 stream AD to insert in data source at very begining position. Call this before `[self.tableView reloadData]`
 ```objc
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        .....
+        // replace @"STREAM" with your own placement name
+        _streamHelper = [[StreamADHelper alloc] initWithPlacement:@"STREAM"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     .....
@@ -137,3 +148,90 @@ StreamADHelper will return whether indexPath is a stream AD, and return the corr
 }
 ```
 ### Check whether tableView is in idle status
+StreamADHelper will only start playing video AD while tableView is in idle status to maximize the user experience. Therefore, we have this callback method to check whether it is the idle status suitable to play ADs.
+
+You may check other condition if your UI has different effect other than tableView.
+```objc
+- (BOOL)checkIdle
+{
+    return (![[self tableView] isDecelerating] && ![[self tableView] isDragging]);
+}
+```
+
+## Hook viewController & tableView events
+### Activate helper
+Helper will manage ADs if and only if it is in **active** status. So we need to set active (unset active) at the right time.
+Usually the right time means viewController appear to the view (or disappear from the view).
+```objc
+// stream will appear to the view
+[_streamHelper setActive:YES];
+
+// stream will disappear from the view
+[_streamHelper setActive:NO];
+```
+
+### Update scrollView state to allow helper check AD start/stop
+We need scrollView state to check whether to start/stop stream ADs.
+```objc
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_streamHelper scrollViewStateChanged];
+    ....
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [_streamHelper scrollViewStateChanged];
+    ....
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    // No need to call if scrollView is still scrolling
+    if (decelerate == NO) {
+        [_streamHelper scrollViewStateChanged];
+    }
+    ....
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [_streamHelper scrollViewStateChanged];
+    ....
+}
+```
+
+### Update tableView visible position
+In order to compute the right position to request/insert stream ADs, we need to hook `scrollViewDidScroll:` to update current visible positions.
+```objc
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_streamHelper scrollViewDidScroll:scrollView tableView:[self tableView]];
+    ....
+}
+```
+
+## Refresh data source
+It is normal to have data source refresh mechanism in stream view (ex. pull to refresh). When data source is refreshed, you also need to reset streamADHelper to clear previous loaded ADs.
+```objc
+- (void)refresh
+{
+    [self.pullToRefreshView startLoading];
+    [_streamHelper cleanADs];
+    [self prepareDataSources];
+    [self.tableView reloadData];
+    [_streamHelper updateVisiblePosition:self.tableView];
+    [self.pullToRefreshView finishLoading];
+}
+
+- (void)pullToRefreshViewDidStartLoading:(SSPullToRefreshView *)view
+{
+    [self refresh];
+}
+```
+***
+More information
+
+- [API reference]()
