@@ -66,6 +66,9 @@ Request content AD while you load detail page content with article unique id.
 
 ## onPullDownAnimation
 - `onPullDownAnimationWithAD:` will only be called with a specific AD format (Card-Video-PullDown)
+
+![content pulldown AD](../images/content_pulldown.jpg)
+
 - When the AD is clicked by user, the engage module will extend from the AD view's bottom. Therefore, scrollView should update the views under content AD for the animation.
 ```objc
 - (void)onPullDownAnimationWithAD:(UIView *)adView

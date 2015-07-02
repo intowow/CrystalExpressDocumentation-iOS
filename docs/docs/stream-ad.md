@@ -132,8 +132,10 @@ StreamADHelper will return whether indexPath is a stream AD, and return the corr
 
 ### onADAnimation
 - onADAnimation will only be called with a specific AD format (Card-Video-PullDown)
+
+![stream pulldown AD](../images/stream_pulldown.jpg)
+
 - When the AD is clicked by user, the engage module will extend from the AD view's bottom. Therefore, tableView should update cell height for the animation.
-- [TODO] 補圖
 ```objc
 - (void)onADAnimation:(UIView *)adView atIndexPath:(NSIndexPath *)indexPath
 {
