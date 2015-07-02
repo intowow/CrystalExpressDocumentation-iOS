@@ -7,10 +7,10 @@
 - Integration via Cocoapods
 - Open source version for CrystalExpress Demo app.
 - Show integration method with following AD placements in a traditional content provider app.
- - OpenSplash AD
- - Interstitial AD
- - In-Stream AD
- - In-Read AD
+   - OpenSplash AD
+   - Interstitial AD
+   - In-Stream AD
+   - In-Read AD
 
 ## CrystalExpressPodSample
 - Use **CrystalExpressPodSample.xcworkspace**

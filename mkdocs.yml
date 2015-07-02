@@ -18,3 +18,4 @@ pages:
     - 'AD preview': 'docs/ad-preview.md'
 - Sample code: 'docs/sample-code.md'
 - Trouble shooting: 'docs/trouble-shooting.md'
+- API reference: 'docs/api-referece.md'
