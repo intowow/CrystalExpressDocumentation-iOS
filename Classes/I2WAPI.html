@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>I2WAPI Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1333)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">CrystalExpressSDK </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">intowow</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/VERBOSE_LOG">+ VERBOSE_LOG</option>
+		
+		<option value="//api/name/cleanup">+ cleanup</option>
+		
+		<option value="//api/name/getBannerADWithPlacement:onReady:onFailure:">+ getBannerADWithPlacement:onReady:onFailure:</option>
+		
+		<option value="//api/name/getContentADWithPlacement:isPreroll:adWidth:onReady:onFailure:onPullDownAnimation:">+ getContentADWithPlacement:isPreroll:adWidth:onReady:onFailure:onPullDownAnimation:</option>
+		
+		<option value="//api/name/getSectionSplashGuardTime">+ getSectionSplashGuardTime</option>
+		
+		<option value="//api/name/getSplashADWithPlacement:place:type:onReady:onFailure:">+ getSplashADWithPlacement:place:type:onReady:onFailure:</option>
+		
+		<option value="//api/name/getStreamADServingFreqWithPlacement:">+ getStreamADServingFreqWithPlacement:</option>
+		
+		<option value="//api/name/getStreamADServingMaxPositionWithPlacement:">+ getStreamADServingMaxPositionWithPlacement:</option>
+		
+		<option value="//api/name/getStreamADServingMinPositionWithPlacement:">+ getStreamADServingMinPositionWithPlacement:</option>
+		
+		<option value="//api/name/getStreamADWithPlacement:helperKey:place:adWidth:onReady:onFailure:onPullDownAnimation:">+ getStreamADWithPlacement:helperKey:place:adWidth:onReady:onFailure:onPullDownAnimation:</option>
+		
+		<option value="//api/name/handleDeepLinkWithUrl:sourceApplication:">+ handleDeepLinkWithUrl:sourceApplication:</option>
+		
+		<option value="//api/name/initWithVerboseLog:isTestMode:">+ initWithVerboseLog:isTestMode:</option>
+		
+		<option value="//api/name/isAdServing">+ isAdServing</option>
+		
+		<option value="//api/name/isTestMode">+ isTestMode</option>
+		
+		<option value="//api/name/refreshI2WAds">+ refreshI2WAds</option>
+		
+		<option value="//api/name/requestMultiofferAD">+ requestMultiofferAD</option>
+		
+		<option value="//api/name/requestSplashAD">+ requestSplashAD</option>
+		
+		<option value="//api/name/sendDebuggerMessage:">+ sendDebuggerMessage:</option>
+		
+		<option value="//api/name/setActivePlacement:">+ setActivePlacement:</option>
+		
+		<option value="//api/name/setAdEventDelegate:">+ setAdEventDelegate:</option>
+		
+		<option value="//api/name/setOpenSplashLastViewTime:">+ setOpenSplashLastViewTime:</option>
+		
+		<option value="//api/name/trackCustomEventWithType:props:">+ trackCustomEventWithType:props:</option>
+		
+		<option value="//api/name/triggerBackgroundFetchOnSuccess:onFail:onNoData:">+ triggerBackgroundFetchOnSuccess:onFail:onNoData:</option>
+		
+		<option value="//api/name/updateUserLastLocation:">+ updateUserLastLocation:</option>
+		
+	</optgroup>
+	
+
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">I2WAPI Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>I2WAPI.h</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						
+						
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithVerboseLog:isTestMode:" title="initWithVerboseLog:isTestMode:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithVerboseLog:isTestMode:">+&nbsp;initWithVerboseLog:isTestMode:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>initializer of I2WAPI</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)initWithVerboseLog:(BOOL)<em>enableVerbose</em> isTestMode:(BOOL)<em>testMode</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>enableVerbose</code></th>
+						<td><p>whether to enable debug message</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>testMode</code></th>
+						<td><p>whether to init in TEST mode</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/VERBOSE_LOG" title="VERBOSE_LOG"></a>
+	<h3 class="method-title"><code><a href="#//api/name/VERBOSE_LOG">+&nbsp;VERBOSE_LOG</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>is I2WAPI init with verbose_log</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)VERBOSE_LOG</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>BOOL</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isTestMode" title="isTestMode"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isTestMode">+&nbsp;isTestMode</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>is I2WAPI is in TEST mode</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isTestMode</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>BOOL</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/isAdServing" title="isAdServing"></a>
+	<h3 class="method-title"><code><a href="#//api/name/isAdServing">+&nbsp;isAdServing</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>check whether AD serving is enabled in backend server</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (BOOL)isAdServing</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>BOOL</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/refreshI2WAds" title="refreshI2WAds"></a>
+	<h3 class="method-title"><code><a href="#//api/name/refreshI2WAds">+&nbsp;refreshI2WAds</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>refresh/remove unnecessary AD creatives</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)refreshI2WAds</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setOpenSplashLastViewTime:" title="setOpenSplashLastViewTime:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setOpenSplashLastViewTime:">+&nbsp;setOpenSplashLastViewTime:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>set OpenSplash AD last view time</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setOpenSplashLastViewTime:(long long)<em>time</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>time</code></th>
+						<td><p>unixtime in millisecond</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@deprecated</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSectionSplashGuardTime" title="getSectionSplashGuardTime"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSectionSplashGuardTime">+&nbsp;getSectionSplashGuardTime</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>get section splash guard time server setting</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (long long)getSectionSplashGuardTime</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>millisecond</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@deprecated</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/triggerBackgroundFetchOnSuccess:onFail:onNoData:" title="triggerBackgroundFetchOnSuccess:onFail:onNoData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/triggerBackgroundFetchOnSuccess:onFail:onNoData:">+&nbsp;triggerBackgroundFetchOnSuccess:onFail:onNoData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>trigger SDK background fetch flow</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)triggerBackgroundFetchOnSuccess:(void ( ^ ) ( ))<em>success</em> onFail:(void ( ^ ) ( ))<em>fail</em> onNoData:(void ( ^ ) ( ))<em>noData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>success</code></th>
+						<td><p>the callback block of background fetch success</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>fail</code></th>
+						<td><p>the callback block of background fetch fail</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>noData</code></th>
+						<td><p>the callback block of background fetch no data</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestSplashAD" title="requestSplashAD"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestSplashAD">+&nbsp;requestSplashAD</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>request Splash AD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (InterstitialADViewController *)requestSplashAD</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>InterstitialADViewController</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@deprecated</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/requestMultiofferAD" title="requestMultiofferAD"></a>
+	<h3 class="method-title"><code><a href="#//api/name/requestMultiofferAD">+&nbsp;requestMultiofferAD</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>request MultiOffer Splash AD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (InterstitialADViewController *)requestMultiofferAD</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>InterstitialADViewController</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>@deprecated</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getSplashADWithPlacement:place:type:onReady:onFailure:" title="getSplashADWithPlacement:place:type:onReady:onFailure:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getSplashADWithPlacement:place:type:onReady:onFailure:">+&nbsp;getSplashADWithPlacement:place:type:onReady:onFailure:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>request Splash AD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)getSplashADWithPlacement:(NSString *)<em>placement</em> place:(int)<em>place</em> type:(CESplashType)<em>splashType</em> onReady:(void ( ^ ) ( ADView *adView , BOOL fitsMultiOffer ))<em>ready</em> onFailure:(void ( ^ ) ( NSError *error ))<em>failure</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>place</code></th>
+						<td><p>AD order</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>splashType</code></th>
+						<td><p>the splash type want to request</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ready</code></th>
+						<td><p>callback block while ADView is ready</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>failure</code></th>
+						<td><p>callback block while fail to request AD</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getBannerADWithPlacement:onReady:onFailure:" title="getBannerADWithPlacement:onReady:onFailure:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getBannerADWithPlacement:onReady:onFailure:">+&nbsp;getBannerADWithPlacement:onReady:onFailure:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>request banner AD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)getBannerADWithPlacement:(NSString *)<em>placement</em> onReady:(void ( ^ ) ( ADView *))<em>ready</em> onFailure:(void ( ^ ) ( NSError *))<em>failure</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ready</code></th>
+						<td><p>callback block while ADView is ready</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>failure</code></th>
+						<td><p>callback block while fail to request AD</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getStreamADWithPlacement:helperKey:place:adWidth:onReady:onFailure:onPullDownAnimation:" title="getStreamADWithPlacement:helperKey:place:adWidth:onReady:onFailure:onPullDownAnimation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getStreamADWithPlacement:helperKey:place:adWidth:onReady:onFailure:onPullDownAnimation:">+&nbsp;getStreamADWithPlacement:helperKey:place:adWidth:onReady:onFailure:onPullDownAnimation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>request stream AD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)getStreamADWithPlacement:(NSString *)<em>placement</em> helperKey:(NSString *)<em>helperKey</em> place:(int)<em>place</em> adWidth:(CGFloat)<em>adWidth</em> onReady:(void ( ^ ) ( ADView *adView ))<em>ready</em> onFailure:(void ( ^ ) ( NSError *error ))<em>failure</em> onPullDownAnimation:(void ( ^ ) ( UIView *))<em>animation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>helperKey</code></th>
+						<td><p>the key to identify this request, will be placement+unix_timestamp (ex. STREAM_1435318372000)</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>place</code></th>
+						<td><p>AD order</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>adWidth</code></th>
+						<td><p>preferred stream AD width</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ready</code></th>
+						<td><p>callback block while ADView is ready</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>failure</code></th>
+						<td><p>callback block while fail to request AD</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>animation</code></th>
+						<td><p>callback block while AD animation occur (ex. CARD-VIDEO-PULLDOWN AD is clicked by user)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getContentADWithPlacement:isPreroll:adWidth:onReady:onFailure:onPullDownAnimation:" title="getContentADWithPlacement:isPreroll:adWidth:onReady:onFailure:onPullDownAnimation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getContentADWithPlacement:isPreroll:adWidth:onReady:onFailure:onPullDownAnimation:">+&nbsp;getContentADWithPlacement:isPreroll:adWidth:onReady:onFailure:onPullDownAnimation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>request content AD</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)getContentADWithPlacement:(NSString *)<em>placement</em> isPreroll:(BOOL)<em>isPreroll</em> adWidth:(CGFloat)<em>adWidth</em> onReady:(void ( ^ ) ( ADView *))<em>ready</em> onFailure:(void ( ^ ) ( NSError *))<em>failure</em> onPullDownAnimation:(void ( ^ ) ( UIView *))<em>animation</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isPreroll</code></th>
+						<td><p>whether this is a preroll request</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>adWidth</code></th>
+						<td><p>preferred content AD width</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>ready</code></th>
+						<td><p>callback block while ADView is ready</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>failure</code></th>
+						<td><p>callback block while fail to request AD</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>animation</code></th>
+						<td><p>callback block while AD animation occur (ex. CARD-VIDEO-PULLDOWN AD is clicked by user)</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setActivePlacement:" title="setActivePlacement:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setActivePlacement:">+&nbsp;setActivePlacement:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>set current active placement</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setActivePlacement:(NSString *)<em>placement</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getStreamADServingFreqWithPlacement:" title="getStreamADServingFreqWithPlacement:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getStreamADServingFreqWithPlacement:">+&nbsp;getStreamADServingFreqWithPlacement:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>get stream AD serving frequency server setting</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (int)getStreamADServingFreqWithPlacement:(NSString *)<em>placement</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>int value for frequency number</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getStreamADServingMinPositionWithPlacement:" title="getStreamADServingMinPositionWithPlacement:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getStreamADServingMinPositionWithPlacement:">+&nbsp;getStreamADServingMinPositionWithPlacement:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>get stream AD serving min position server setting</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (int)getStreamADServingMinPositionWithPlacement:(NSString *)<em>placement</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>int value for min position</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getStreamADServingMaxPositionWithPlacement:" title="getStreamADServingMaxPositionWithPlacement:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getStreamADServingMaxPositionWithPlacement:">+&nbsp;getStreamADServingMaxPositionWithPlacement:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>get stream AD serving max position server setting</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (int)getStreamADServingMaxPositionWithPlacement:(NSString *)<em>placement</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>placement</code></th>
+						<td><p>placement string</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>int value for max position</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trackCustomEventWithType:props:" title="trackCustomEventWithType:props:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trackCustomEventWithType:props:">+&nbsp;trackCustomEventWithType:props:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>send customized track event to CrystalExpress tracking server</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)trackCustomEventWithType:(NSString *)<em>type</em> props:(NSDictionary *)<em>props</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>string represet event type</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>props</code></th>
+						<td><p>properties dictionary</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/updateUserLastLocation:" title="updateUserLastLocation:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/updateUserLastLocation:">+&nbsp;updateUserLastLocation:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>update user location</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)updateUserLastLocation:(NSDictionary *)<em>location</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>location</code></th>
+						<td><p>loaction information</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setAdEventDelegate:" title="setAdEventDelegate:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setAdEventDelegate:">+&nbsp;setAdEventDelegate:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>set AD event delegate</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setAdEventDelegate:(id&lt;I2WADEventDelegate&gt;)<em>delegate</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>delegate</code></th>
+						<td><p>the object conform to <a href="../Protocols/I2WADEventDelegate.html">I2WADEventDelegate</a></p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/handleDeepLinkWithUrl:sourceApplication:" title="handleDeepLinkWithUrl:sourceApplication:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/handleDeepLinkWithUrl:sourceApplication:">+&nbsp;handleDeepLinkWithUrl:sourceApplication:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>handle deeplinking</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)handleDeepLinkWithUrl:(NSURL *)<em>url</em> sourceApplication:(NSString *)<em>sourceApplication</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>url</code></th>
+						<td><p>deeplink url</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>sourceApplication</code></th>
+						<td><p>sourceApplication</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/cleanup" title="cleanup"></a>
+	<h3 class="method-title"><code><a href="#//api/name/cleanup">+&nbsp;cleanup</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>cleanup SDK storage, this is for testing only</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)cleanup</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/sendDebuggerMessage:" title="sendDebuggerMessage:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/sendDebuggerMessage:">+&nbsp;sendDebuggerMessage:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>send debug message to realtime debug server</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)sendDebuggerMessage:(NSString *)<em>msg</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>msg</code></th>
+						<td><p>message string</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2015 intowow. All rights reserved. Updated: 2015-07-02</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>SplashADHelperDelegate Protocol Reference</title>
+	<title>I2WADEventDelegate Protocol Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -60,9 +60,9 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/SplashADDidFailToReceiveAdWithError:viewController:">- SplashADDidFailToReceiveAdWithError:viewController:</option>
+		<option value="//api/name/onAdClick:">- onAdClick:</option>
 		
-		<option value="//api/name/SplashADDidReceiveAd:viewController:">- SplashADDidReceiveAd:viewController:</option>
+		<option value="//api/name/onAdImpression:">- onAdImpression:</option>
 		
 	</optgroup>
 	
@@ -79,7 +79,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">SplashADHelperDelegate Protocol Reference</h1>
+					<h1 class="title">I2WADEventDelegate Protocol Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -88,7 +88,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>SplashADHelper.h</td>
+	<td>I2WAPI.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -98,7 +98,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/SplashADHelper.html">SplashADHelper</a> Delegate that can receive AD events</p>
+						<p>CrsytalExpress AD event delegate</p>
 					</div>
 					
 					
@@ -114,8 +114,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/SplashADDidReceiveAd:viewController:" title="SplashADDidReceiveAd:viewController:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/SplashADDidReceiveAd:viewController:">&ndash;&nbsp;SplashADDidReceiveAd:viewController:</a></code>
+	<a name="//api/name/onAdClick:" title="onAdClick:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onAdClick:">&ndash;&nbsp;onAdClick:</a></code>
 <span class="task-item-suffix">required method</span></h3>
 
 	<div class="method-info">
@@ -125,12 +125,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>callback function while splash AD is ready to present</p>
+				<p>callback while AD is clicked by user</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)SplashADDidReceiveAd:(NSArray *)<em>ad</em> viewController:(SplashADInterfaceViewController *)<em>vc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)onAdClick:(NSString *)<em>adId</em></code></div>
 
 		    
 			
@@ -139,13 +139,8 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>ad</code></th>
-						<td><p>the adViews in viewController</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>vc</code></th>
-						<td><p>splash AD viewController</p></td>
+						<th scope="row" class="argument-name"><code>adId</code></th>
+						<td><p>AD unique string id</p></td>
 					</tr>
 				
 				</table>
@@ -165,15 +160,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SplashADHelper.h</code></p>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/SplashADDidFailToReceiveAdWithError:viewController:" title="SplashADDidFailToReceiveAdWithError:viewController:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/SplashADDidFailToReceiveAdWithError:viewController:">&ndash;&nbsp;SplashADDidFailToReceiveAdWithError:viewController:</a></code>
+	<a name="//api/name/onAdImpression:" title="onAdImpression:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onAdImpression:">&ndash;&nbsp;onAdImpression:</a></code>
 <span class="task-item-suffix">required method</span></h3>
 
 	<div class="method-info">
@@ -183,12 +178,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>callback function while fail to request splash AD</p>
+				<p>callback while AD is viewed by user</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)SplashADDidFailToReceiveAdWithError:(NSError *)<em>error</em> viewController:(SplashADInterfaceViewController *)<em>vc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)onAdImpression:(NSString *)<em>adId</em></code></div>
 
 		    
 			
@@ -197,13 +192,8 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>the error which indicate why request ad fail</p></td>
-					</tr>
-				
-					<tr>
-						<th scope="row" class="argument-name"><code>vc</code></th>
-						<td><p>splash AD viewController, will be nil here</p></td>
+						<th scope="row" class="argument-name"><code>adId</code></th>
+						<td><p>AD unique string id</p></td>
 					</tr>
 				
 				</table>
@@ -223,7 +213,7 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SplashADHelper.h</code></p>
+				<p><code class="declared-in-ref">I2WAPI.h</code></p>
 			</div>
 			
 			

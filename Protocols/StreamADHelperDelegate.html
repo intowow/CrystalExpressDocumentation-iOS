@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>SplashADHelperDelegate Protocol Reference</title>
+	<title>StreamADHelperDelegate Protocol Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -60,9 +60,11 @@
 	
 	<optgroup label="Instance Methods">
 		
-		<option value="//api/name/SplashADDidFailToReceiveAdWithError:viewController:">- SplashADDidFailToReceiveAdWithError:viewController:</option>
+		<option value="//api/name/checkIdle">- checkIdle</option>
 		
-		<option value="//api/name/SplashADDidReceiveAd:viewController:">- SplashADDidReceiveAd:viewController:</option>
+		<option value="//api/name/onADAnimation:atIndexPath:">- onADAnimation:atIndexPath:</option>
+		
+		<option value="//api/name/onADLoaded:atIndexPath:isPreroll:">- onADLoaded:atIndexPath:isPreroll:</option>
 		
 	</optgroup>
 	
@@ -79,7 +81,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">SplashADHelperDelegate Protocol Reference</h1>
+					<h1 class="title">StreamADHelperDelegate Protocol Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -88,7 +90,7 @@
 	<td>NSObject</td>
 </tr><tr>
 	<th>Declared in</th>
-	<td>SplashADHelper.h</td>
+	<td>StreamADHelper.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -98,7 +100,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p><a href="../Classes/SplashADHelper.html">SplashADHelper</a> Delegate that can receive AD events</p>
+						<p><a href="../Classes/StreamADHelper.html">StreamADHelper</a> Delegate that handle stream AD&rsquo;s callback event</p>
 					</div>
 					
 					
@@ -114,8 +116,8 @@
 
 						<div class="task-list">
 							<div class="section-method">
-	<a name="//api/name/SplashADDidReceiveAd:viewController:" title="SplashADDidReceiveAd:viewController:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/SplashADDidReceiveAd:viewController:">&ndash;&nbsp;SplashADDidReceiveAd:viewController:</a></code>
+	<a name="//api/name/onADLoaded:atIndexPath:isPreroll:" title="onADLoaded:atIndexPath:isPreroll:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onADLoaded:atIndexPath:isPreroll:">&ndash;&nbsp;onADLoaded:atIndexPath:isPreroll:</a></code>
 <span class="task-item-suffix">required method</span></h3>
 
 	<div class="method-info">
@@ -125,12 +127,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>callback function while splash AD is ready to present</p>
+				<p>callback delegate while the stream ad is ready at the target indexPath, and indicate whether it is a preroll call</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)SplashADDidReceiveAd:(NSArray *)<em>ad</em> viewController:(SplashADInterfaceViewController *)<em>vc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (NSIndexPath *)onADLoaded:(UIView *)<em>adView</em> atIndexPath:(NSIndexPath *)<em>indexPath</em> isPreroll:(BOOL)<em>isPreroll</em></code></div>
 
 		    
 			
@@ -139,19 +141,29 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>ad</code></th>
-						<td><p>the adViews in viewController</p></td>
+						<th scope="row" class="argument-name"><code>adView</code></th>
+						<td><p>stream AD UIView</p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>vc</code></th>
-						<td><p>splash AD viewController</p></td>
+						<th scope="row" class="argument-name"><code>indexPath</code></th>
+						<td><p>the target indexPath want to insert to data source</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>isPreroll</code></th>
+						<td><p>indicate whether this is an preroll request</p></td>
 					</tr>
 				
 				</table>
 			</div>
 			
 
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>the final NSIndexPath insert into data source</p>
+			</div>
 			
 
 			
@@ -165,15 +177,15 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SplashADHelper.h</code></p>
+				<p><code class="declared-in-ref">StreamADHelper.h</code></p>
 			</div>
 			
 			
 		</div>
 	</div>
 </div><div class="section-method">
-	<a name="//api/name/SplashADDidFailToReceiveAdWithError:viewController:" title="SplashADDidFailToReceiveAdWithError:viewController:"></a>
-	<h3 class="method-title"><code><a href="#//api/name/SplashADDidFailToReceiveAdWithError:viewController:">&ndash;&nbsp;SplashADDidFailToReceiveAdWithError:viewController:</a></code>
+	<a name="//api/name/onADAnimation:atIndexPath:" title="onADAnimation:atIndexPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/onADAnimation:atIndexPath:">&ndash;&nbsp;onADAnimation:atIndexPath:</a></code>
 <span class="task-item-suffix">required method</span></h3>
 
 	<div class="method-info">
@@ -183,12 +195,12 @@
 			
 			
 			<div class="method-subsection brief-description">
-				<p>callback function while fail to request splash AD</p>
+				<p>callback on pull down animation happen at indexPath</p>
 			</div>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>- (void)SplashADDidFailToReceiveAdWithError:(NSError *)<em>error</em> viewController:(SplashADInterfaceViewController *)<em>vc</em></code></div>
+			<div class="method-subsection method-declaration"><code>- (void)onADAnimation:(UIView *)<em>adView</em> atIndexPath:(NSIndexPath *)<em>indexPath</em></code></div>
 
 		    
 			
@@ -197,13 +209,13 @@
 				<table class="argument-def parameter-def">
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>error</code></th>
-						<td><p>the error which indicate why request ad fail</p></td>
+						<th scope="row" class="argument-name"><code>adView</code></th>
+						<td><p>the pulldown stream AD UIView</p></td>
 					</tr>
 				
 					<tr>
-						<th scope="row" class="argument-name"><code>vc</code></th>
-						<td><p>splash AD viewController, will be nil here</p></td>
+						<th scope="row" class="argument-name"><code>indexPath</code></th>
+						<td><p>the pulldown stream AD&rsquo;s NSIndexPath</p></td>
 					</tr>
 				
 				</table>
@@ -223,7 +235,53 @@
 			
 			<div class="method-subsection declared-in-section">
 				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">SplashADHelper.h</code></p>
+				<p><code class="declared-in-ref">StreamADHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/checkIdle" title="checkIdle"></a>
+	<h3 class="method-title"><code><a href="#//api/name/checkIdle">&ndash;&nbsp;checkIdle</a></code>
+<span class="task-item-suffix">required method</span></h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>callback to check whether the stream view is in idle state</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)checkIdle</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>whether the stream view is in idle state</p>
+			</div>
+			
+
+			
+
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">StreamADHelper.h</code></p>
 			</div>
 			
 			
