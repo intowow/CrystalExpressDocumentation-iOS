@@ -16,6 +16,9 @@ pages:
     - 'Register background task': 'docs/register-background-task.md'
     - 'Register background fetch': 'docs/register-background-fetch.md'
     - 'AD preview': 'docs/ad-preview.md'
+- Common placements:
+  - 'Open Splash': 'docs/open-splash-ad.md'
+  - 'Interstitial Splash': 'docs/interstitial-ad.md'
 - Sample code: 'docs/sample-code.md'
 - Trouble shooting: 'docs/trouble-shooting.md'
 - API reference: 'docs/api-reference.md'
