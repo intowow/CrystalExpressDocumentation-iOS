@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>CESplashMode Constants Reference</title>
+	<title>CELandscapeViewControllerPresentAnimationOption Constants Reference</title>
 
 	<link rel="stylesheet" href="../css/style.css">
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
@@ -59,7 +59,7 @@
 		<div id="overview_contents" class="container">
 			<div id="content">
 				<main role="main">
-					<h1 class="title">CESplashMode Constants Reference</h1>
+					<h1 class="title">CELandscapeViewControllerPresentAnimationOption Constants Reference</h1>
 
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
@@ -75,11 +75,11 @@
 					
 
                     
-                    <h3 class="subsubtitle method-title">CESplashMode</h3>
+                    <h3 class="subsubtitle method-title">CELandscapeViewControllerPresentAnimationOption</h3>
                     
 					
 					<div class="section section-overview">
-                        <p>Splash AD Mode</p>
+                        <p>Landscape viewcontroller present animation option</p>
 					</div>
 					
 					
@@ -87,15 +87,11 @@
                         <!-- display enum values -->
                         
                         <h4 class="method-subtitle">Definition</h4>
-                        <code>typedef NS_ENUM(NSUInteger, CESplashMode ) {<br>
+                        <code>typedef NS_ENUM(NSUInteger, CELandscapeViewControllerPresentAnimationOption ) {<br>
                             
-                            &nbsp;&nbsp; <a href="">CE_SPLASH_MODE_UNKNOWN</a>,<br>
+                            &nbsp;&nbsp; <a href="">CE_SPLASH_LANDSCAPE_PRESENT_DEFAULT</a>,<br>
                             
-                            &nbsp;&nbsp; <a href="">CE_SPLASH_MODE_HYBRID</a>,<br>
-                            
-                            &nbsp;&nbsp; <a href="">CE_SPLASH_MODE_MULTI_OFFER</a>,<br>
-                            
-                            &nbsp;&nbsp; <a href="">CE_SPLASH_MODE_SINGLE_OFFER</a>,<br>
+                            &nbsp;&nbsp; <a href="">CE_SPLASH_LANDSCAPE_PRESENT_ROTATION</a>,<br>
                             
                             };</code>
                     
@@ -105,11 +101,11 @@
                         <h4 class="method-subtitle">Constants</h4>
                         <dl class="termdef">
                             
-                            <dt><a name="" title="CE_SPLASH_MODE_UNKNOWN"></a><code>CE_SPLASH_MODE_UNKNOWN</code></dt>
+                            <dt><a name="" title="CE_SPLASH_LANDSCAPE_PRESENT_DEFAULT"></a><code>CE_SPLASH_LANDSCAPE_PRESENT_DEFAULT</code></dt>
 <dd>
 
 
-<p>unknown splash mode, default value</p>
+<p>iOS default animation</p>
 
 
 
@@ -122,46 +118,11 @@
 	
 </dd>
                             
-                            <dt><a name="" title="CE_SPLASH_MODE_HYBRID"></a><code>CE_SPLASH_MODE_HYBRID</code></dt>
+                            <dt><a name="" title="CE_SPLASH_LANDSCAPE_PRESENT_ROTATION"></a><code>CE_SPLASH_LANDSCAPE_PRESENT_ROTATION</code></dt>
 <dd>
 
 
-<p>hybrid mode means viewController might be multi-offer or single-offer</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">CESplashAD.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="CE_SPLASH_MODE_MULTI_OFFER"></a><code>CE_SPLASH_MODE_MULTI_OFFER</code></dt>
-<dd>
-
-
-<p>multi-offer splash ADs will contain 1~4 splash ADs in viewController
-allow user to swipe between ADs</p>
-
-
-
-
-
-    
-	<p>
-		Declared In <code class="declared-in-ref">CESplashAD.h</code>.
-	</p>
-	
-</dd>
-                            
-                            <dt><a name="" title="CE_SPLASH_MODE_SINGLE_OFFER"></a><code>CE_SPLASH_MODE_SINGLE_OFFER</code></dt>
-<dd>
-
-
-<p>single-offer gurantee that viewController will only have 1 splash AD</p>
+<p>rotation from portrait to landscape animation</p>
 
 
 
