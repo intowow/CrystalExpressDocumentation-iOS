@@ -5,12 +5,12 @@ While back to stream section page from detail content page.
 The AD format that Interstitial Splash support is **Splash series**
 
 ## Integration method
-- Reference to [sample code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m#L239)
+- Reference to [sample code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m)
 
 ### Integration detail
 - In sample project, `DemoDetailContentViewController` is detail content page, `DemoStreamSectionViewController` is stream section page
 - While user press back button in `DemoDetailContentViewController`, request `DemoStreamSectionViewController` requestInterstitialSplashAD method after pop viewController animation done.
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/ViewController/DemoDetailContentViewController.m#L153)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/ViewController/DemoDetailContentViewController.m#L148)
 ```objc
 #pragma mark - DemoDetailContentViewController.m
 - (void)pressBackBtn:(id)sender
@@ -27,9 +27,9 @@ The AD format that Interstitial Splash support is **Splash series**
 ```
 
 - Implement requestInterstitialSplashAD function in `DemoStreamSectionViewController`
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m#L239)
-- Implement SplashADHelperDelegate functions
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m#L255)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m#L231)
+- Implement CESplashADDelegate functions
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m#L236)
 ```objc
 #pragma mark - DemoStreamSectionViewController.m
 - (instancetype)init

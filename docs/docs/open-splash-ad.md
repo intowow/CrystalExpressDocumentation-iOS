@@ -10,7 +10,7 @@ The AD format that Open Splash support is **Splash series**
 
 ### Integration detail
 - While App launch, first initialize SDK, set `_shouldRequestOpenSplash` to YES
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L39)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L45)
 ```objc
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,7 +25,7 @@ The AD format that Open Splash support is **Splash series**
 ```
 
 - While App will enter foreground from background, set `_shouldRequestOpenSplash` to YES
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L65)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L78)
 ```objc
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
@@ -34,7 +34,7 @@ The AD format that Open Splash support is **Splash series**
 ```
 
 - Don't request Open Splash in `applicationWillResignActive:` and `application:openURL:sourceApplication:annotation:`
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L47)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L58)
 ```objc
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -56,7 +56,7 @@ The AD format that Open Splash support is **Splash series**
 
 - Request Open Splash at `applicationDidBecomeActive:`
 - If do not request Open Splash, then start to prepare App content viewController.
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L71)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L83)
 ```objc
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
@@ -68,7 +68,7 @@ The AD format that Open Splash support is **Splash series**
 ```
 
 - First make sure there's no Splash AD on current UIView hierarchy, then request Open Splash
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L115)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L144)
 ```objc
 - (BOOL)requestOpenSplash
 {
@@ -86,7 +86,7 @@ The AD format that Open Splash support is **Splash series**
 - Implement SplashADHelper delegate function
     - `CESplashADDidReceiveAd:viewController:` Success receive splash AD viewController, present it, then start to prepare App content viewController.
     - `CESplashADDidFailToReceiveAdWithError:viewController:` Fail to request splash AD, start to prepare App content viewController.
-    - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L138)
+    - [View code](https://github.com/roylo/CrystalExpressSample/blob/6f9db77f1cc4a1d05a602bcb82096937290d7aef/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L150)
 ```objc
 #pragma mark - SplashADHelperDelegate
 - (void)CESplashADDidReceiveAd:(NSArray *)ad viewController:(SplashADInterfaceViewController *)vc
