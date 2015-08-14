@@ -13,7 +13,7 @@ In your application delegate's `application:didFinishLaunchingWithOptions:` meth
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // init SDK
-    [I2WAPI initWithVerboseLog:YES isTestMode:NO];
+    [I2WAPI initWithVerboseLog:NO isTestMode:NO];
     return YES;
 }
 

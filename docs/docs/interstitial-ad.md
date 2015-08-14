@@ -32,19 +32,44 @@ The AD format that Interstitial Splash support is **Splash series**
     - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/ViewController/DemoStreamSectionViewController.m#L255)
 ```objc
 #pragma mark - DemoStreamSectionViewController.m
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        ....
+        _CEInterstitialSplash = [[CESplashAD alloc] initWithPlacement:@"INTERSTITIAL_SPLASH" delegate:self];
+    }
+    return self;
+}
+
 - (void)requestInterstitialSplashAD
 {
-    [_interstitialSplashHelper requestSplashADWithPlacement:@"INTERSTITIAL_SPLASH" mode:CE_SPLASH_MODE_SINGLE_OFFER];
+    [_interstitialSplashHelper loadAd];
 }
 
-#pragma mark - SplashADHelperDelegate
-- (void)SplashADDidReceiveAd:(NSArray *)ad viewController:(SplashADInterfaceViewController *)vc
+- (void)CESplashADDidReceiveAd:(NSArray *)ad viewController:(SplashADInterfaceViewController *)vc
 {
-    [self presentViewController:vc animated:YES completion:nil];
+    [_CEInterstitialSplash showFromViewController:self animated:YES];
 }
 
-- (void)SplashADDidFailToReceiveAdWithError:(NSError *)error viewController:(SplashADInterfaceViewController *)vc
+- (void)CESplashADDidFailToReceiveAdWithError:(NSError *)error viewController:(SplashADInterfaceViewController *)vc
 {
     NSLog("request interstitial AD fail, error:%@", error);
+}
+
+- (void)CESplashAdWillDismissScreen:(SplashADInterfaceViewController *)vc
+{
+}
+
+- (void)CESplashAdWillPresentScreen:(SplashADInterfaceViewController *)vc
+{
+}
+
+- (void)CESplashAdDidDismissScreen:(SplashADInterfaceViewController *)vc
+{
+}
+
+- (void)CESplashAdDidPresentScreen:(SplashADInterfaceViewController *)vc
+{
 }
 ```

@@ -30,7 +30,6 @@ The AD format that Open Splash support is **Splash series**
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     _shouldRequestOpenSplash = YES;
-    [I2WAPI refreshI2WAds];
 }
 ```
 
@@ -79,40 +78,28 @@ The AD format that Open Splash support is **Splash series**
         _shouldRequestOpenSplash = NO;
     }
 
-    BOOL isShowingSplashAd = NO;
-    UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    while (topController.presentedViewController) {
-        topController = topController.presentedViewController;
-        if ([topController isKindOfClass:[SplashADInterfaceViewController class]]) {
-            isShowingSplashAd = YES;
-            return NO;
-        }
-    }
-
-    [_openSplashHelper requestSplashADWithPlacement:@"OPEN_SPLASH" mode:CE_SPLASH_MODE_SINGLE_OFFER];
+    [_openSplashHelper loadAd];
     return YES;
 }
 ```
 
 - Implement SplashADHelper delegate function
-    - `SplashADDidReceiveAd:viewController:` Success receive splash AD viewController, present it, then start to prepare App content viewController.
-    - `SplashADDidFailToReceiveAdWithError:viewController:` Fail to request splash AD, start to prepare App content viewController.
+    - `CESplashADDidReceiveAd:viewController:` Success receive splash AD viewController, present it, then start to prepare App content viewController.
+    - `CESplashADDidFailToReceiveAdWithError:viewController:` Fail to request splash AD, start to prepare App content viewController.
     - [View code](https://github.com/roylo/CrystalExpressSample/blob/cbbc1fa02191568ceb86134afe7134488293e403/CrystalExpressApp/CrystalExpressApp/AppDelegate.m#L138)
 ```objc
 #pragma mark - SplashADHelperDelegate
-- (void)SplashADDidReceiveAd:(NSArray *)ad viewController:(SplashADInterfaceViewController *)vc
+- (void)CESplashADDidReceiveAd:(NSArray *)ad viewController:(SplashADInterfaceViewController *)vc
 {
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
     while (topController.presentedViewController) {
         topController = topController.presentedViewController;
     }
 
-    [topController presentViewController:vc animated:YES completion:^{
-        [self prepareContentViewController];
-    }];
+    [_CEOpenSplashAD showFromViewController:topController animated:YES];
 }
 
-- (void)SplashADDidFailToReceiveAdWithError:(NSError *)error viewController:(SplashADInterfaceViewController *)vc
+- (void)CESplashADDidFailToReceiveAdWithError:(NSError *)error viewController:(SplashADInterfaceViewController *)vc
 {
     NSLog(@"fail to request OPEN_SPLASH, reason:%@", error);
     [self prepareContentViewController];
