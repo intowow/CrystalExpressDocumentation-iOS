@@ -1,230 +1,123 @@
 ## Requirements
-- Stream ADs are designed for UITableViewController class
+- The Stream AD integration is designed based on UITableViewController
 
-## Init streamADHelper
-- We provided a helper class to make stream AD integration easier, via StreamADHelper, you can request and manage stream ADs.
-- Initial streamADHelper in the pre stage (ex. `viewDidLoad`)
-- `preroll` may prepare 1 stream AD to insert in data source at very begining position. Call this before `[self.tableView reloadData]`
+## 1. Initialize CETableViewADHelper
+- We provide CETableViewADHelper class to simplify stream AD integration process, through CETableViewADHelper, you can request and manage stream ADs
+- Initialize CETableViewADHelper at object init stage (ex. `viewDidLoad`)
 ```objc
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        .....
-        // replace @"STREAM" with your own placement name
-        _streamHelper = [[StreamADHelper alloc] initWithPlacement:@"STREAM"];
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     .....
 
     // prepare your tableview data source
     [self prepareDataSource];
-    if (_streamHelper) {
-        // set helper delegate to get AD event
-        [_streamHelper setDelegate:self];
 
-        // if you need customized ad width, add this line (Optional)
-        [_streamHelper setPreferAdWidth:320.0f];
-
-        // call preroll to prepare 1 stream AD before tableView load data
-        [_streamHelper preroll];
-    }
-    [self.tableView reloadData];
-
-    // update cell visible position allow helper to check whether AD should start/stop
-    [_streamHelper updateVisiblePosition:[self tableView]];
-
+    //
+    [self setupStreamADHelper];
    .....
 }
-```
 
-## Request stream AD
-StreamADHelper will return whether indexPath is a stream AD, and return the corresponding ADView.
-```objc
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - stream ADHelper
+- (void)setupStreamADHelper
 {
-    // check whether indexPath is a stream AD
-    UITableViewCell *cell = [self getADTableViewCellForTableView:tableView atIndexPath:indexPath];
-    if (cell != nil) {
-        return cell;
-    } else {
-        // return the normal content cell
-        .....
-    }
+    _adHelper = [CETableViewADHelper helperWithTableView:self.tableView viewController:self placement:@"STREAM"];
+
+    // ---- @optional block ------------------------------
+    // You can assign a AD width for stream AD
+    [_adHelper setAdWidth:310];
+
+    // You can assign background color for AD cell
+    [_adHelper setAdBackgroundColor:[UIColor colorWithWhite:0.906 alpha:1.0f]];
+
+    // You can assign vertical margin for AD cell
+    [_adHelper setAdVerticalMargin:5.0f];
+
+    // ---- end of optional block ------------------------
+
+    // Configure all the setting before loadAd
+    // start request AD
+    [_adHelper loadAd];
 }
 
-- (UITableViewCell *)getADTableViewCellForTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath
-{
-    UIView *adView = [_streamHelper requestADAtPosition:indexPath];
-    if (adView != nil) {
-        NSString *identifier = [NSString stringWithFormat:@"ADCell_%@_%d_%d", _sectionName, (int)[indexPath section], (int)[indexPath row]];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-        }
-
-        [[cell contentView] addSubview:adView];
-        [adView setFrame:CGRectMake((SCREEN_WIDTH - adView.bounds.size.width)/2.0f, _adVerticalMargin, adView.bounds.size.width, adView.bounds.size.height)];
-        [[cell contentView] setBackgroundColor:[UIColor colorWithWhite:0.905 alpha:1.0]];
-        return cell;
-    } else {
-        return nil;
-    }
-}
 ```
 
-## StreamADHelper delegate
-### onADLoaded
-- While stream AD view is ready, SDK will callback to `onADLoaded:(UIView *) atIndexPath:(NSIndexPath *) isPreroll:(BOOL)`
-    - `indexPath` indicate the target indexPath SDK prefer to insert
-    - `isPreroll` indicate whether this is a preroll request.
-- If it is a preroll request, there's no need to insert data source in next main loop.
-- Return the real inserted NSIndexPath to helper, or nil if fail to insert.
+## 2. Update viewController show/hide from user
+- While viewController is show in front of user, we need to call `onShow` to notify AD to play (ex. at `viewDidAppear`)
+- While viewController is hide from user's view, we need to call `onHide` to notify AD to stop play (ex. at `viewDidDisappear`)
+
 ```objc
-- (NSIndexPath *)onADLoaded:(UIView *)adView atIndexPath:(NSIndexPath *)indexPath isPreroll:(BOOL)isPreroll
+- (void)viewDidAppear:(BOOL)animated
 {
-    // Don't place ad at the first place!!
-    int position = MAX(1, [indexPath row]);
-    NSMutableArray *dataSource = [_dataSources objectAtIndex:[indexPath section]];
-    NSIndexPath *finalIndexPath = [NSIndexPath indexPathForRow:position inSection:[indexPath section]];
-
-    if ([dataSource count] >= position) {
-        // if this request is preroll, no need to insert in another main loop
-        if (isPreroll) {
-            NSMutableDictionary *adDict = [[NSMutableDictionary alloc] init];
-            CGFloat adHeight = adView.bounds.size.height;
-            [adDict setObject:[NSNumber numberWithFloat:adHeight + 2*_adVerticalMargin] forKey:@"height"];
-
-            NSArray *indexPathsToAdd = @[finalIndexPath];
-            [[self tableView] beginUpdates];
-            [dataSource insertObject:adDict atIndex:position];
-            [[self tableView] insertRowsAtIndexPaths:indexPathsToAdd
-                                    withRowAnimation:UITableViewRowAnimationNone];
-            [[self tableView] endUpdates];
-        } else {
-            dispatch_async(dispatch_get_main_queue(), ^(){
-                NSMutableDictionary *adDict = [[NSMutableDictionary alloc] init];
-                CGFloat adHeight = adView.bounds.size.height;
-                [adDict setObject:[NSNumber numberWithFloat:adHeight + 2*_adVerticalMargin] forKey:@"height"];
-
-                NSArray *indexPathsToAdd = @[finalIndexPath];
-                [[self tableView] beginUpdates];
-                [dataSource insertObject:adDict atIndex:position];
-                [[self tableView] insertRowsAtIndexPaths:indexPathsToAdd
-                                        withRowAnimation:UITableViewRowAnimationNone];
-                [[self tableView] endUpdates];
-            });
-        }
-
-        // return the real indexPath inserted into tableView
-        return finalIndexPath;
-    } else {
-        // return nil if error
-        return nil;
-    }
-}
-```
-
-### onADAnimation
-- onADAnimation will only be called with a specific AD format (Card-Video-PullDown)
-
-![stream pulldown AD](../images/stream_pulldown.jpg)
-
-- When the AD is clicked by user, the engage module will extend from the AD view's bottom. Therefore, tableView should update cell height for the animation.
-```objc
-- (void)onADAnimation:(UIView *)adView atIndexPath:(NSIndexPath *)indexPath
-{
-    NSMutableArray *dataSource = [_dataSources objectAtIndex:[indexPath section]];
-    [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        [[self tableView] beginUpdates];
-        [[dataSource objectAtIndex:[indexPath row]] setObject:[NSNumber numberWithInt:adView.bounds.size.height + 2*_adVerticalMargin] forKey:@"height"];
-        [[self tableView] endUpdates];
-    } completion:^(BOOL finished) {
-
-    }];
-}
-```
-### Check whether tableView is in idle status
-StreamADHelper will only start playing video AD while tableView is in idle status to maximize the user experience. Therefore, we have this callback method to check whether it is the idle status suitable to play ADs.
-
-You may check other condition if your UI has different effect other than tableView.
-```objc
-- (BOOL)checkIdle
-{
-    return (![[self tableView] isDecelerating] && ![[self tableView] isDragging]);
-}
-```
-
-## Hook viewController & tableView events
-### Activate helper
-Helper will manage ADs if and only if it is in **active** status. So we need to set active (unset active) at the right time.
-Usually the right time means viewController appear to the view (or disappear from the view).
-```objc
-// stream will appear to the view
-[_streamHelper setActive:YES];
-
-// stream will disappear from the view
-[_streamHelper setActive:NO];
-```
-
-### Update scrollView state to allow helper check AD start/stop
-We need scrollView state to check whether to start/stop stream ADs.
-```objc
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [_streamHelper scrollViewStateChanged];
-    ....
+    [super viewDidAppear:animated];
+    [_adHelper onShow];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [_streamHelper scrollViewStateChanged];
-    ....
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    // No need to call if scrollView is still scrolling
-    if (decelerate == NO) {
-        [_streamHelper scrollViewStateChanged];
-    }
-    ....
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [_streamHelper scrollViewStateChanged];
-    ....
+    [_adHelper onHide];
 }
 ```
 
-### Update tableView visible position
-In order to compute the right position to request/insert stream ADs, we need to hook `scrollViewDidScroll:` to update current visible positions.
+## 3. Replace `UITableView` call methods
+- Please replace all the following `UITableView` methods with the CrystalExpressSDK category equivalent methods
+
+For example, the origin method is:
+
 ```objc
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [_streamHelper scrollViewDidScroll:scrollView tableView:[self tableView]];
-    ....
-}
+[self.tableView selectRowAtIndexPath:myIndexPath];
 ```
 
-## Refresh data source
-It is normal to have data source refresh mechanism in stream view (ex. pull to refresh). When data source is refreshed, you also need to reset streamADHelper to clear previous loaded ADs.
+replace it into:
+
+```objc
+[self.tableView ce_selectRowAtIndexPath:myIndexPath];
+```
+
+These methods are just the same with normal `UITableView` method, but to adjust `NSIndexPath` based on the inserted ADs position
+
+`**Important**` The replacement of these methods are crucial, if you skip this integration step, the content cell position in app might be wrong
+
+| Original method                                   | Replace method                                       |
+|---------------------------------------------------|------------------------------------------------------|
+| setDelegate:                                      | ce_setDelegate:                                      |
+| delegate                                          | ce_delegate                                          |
+| setDataSource:                                    | ce_setDataSource:                                    |
+| dataSource                                        | ce_dataSource                                        |
+| reloadData                                        | ce_reloadData                                        |
+| rectForRowAtIndexPath:                            | ce_rectForRowAtIndexPath:                            |
+| indexPathForRowAtPoint:                           | ce_indexPathForRowAtPoint:                           |
+| indexPathForCell:                                 | ce_indexPathForCell:                                 |
+| indexPathsForRowsInRect:                          | ce_indexPathsForRowsInRect:                          |
+| cellForRowAtIndexPath:                            | ce_cellForRowAtIndexPath:                            |
+| visibleCells                                      | ce_visibleCells                                      |
+| indexPathsForVisibleRows:                         | ce_indexPathsForVisibleRows:                         |
+| scrollToRowAtIndexPath:atScrollPosition:animated: | ce_scrollToRowAtIndexPath:atScrollPosition:animated: |
+| beginUpdates                                      | ce_beginUpdates                                      |
+| endUpdates                                        | ce_endUpdates                                        |
+| insertSections:withRowAnimation:                  | ce_insertSections:withRowAnimation:                  |
+| deleteSections:withRowAnimation:                  | ce_deleteSections:withRowAnimation:                  |
+| reloadSections:withRowAnimation:                  | ce_reloadSections:withRowAnimation:                  |
+| moveSection:toSection:                            | ce_moveSection:toSection:                            |
+| insertRowsAtIndexPaths:withRowAnimation:          | ce_insertRowsAtIndexPaths:withRowAnimation:          |
+| deleteRowsAtIndexPaths:withRowAnimation:          | ce_deleteRowsAtIndexPaths:withRowAnimation:          |
+| reloadRowsAtIndexPaths:withRowAnimation:          | ce_reloadRowsAtIndexPaths:withRowAnimation:          |
+| moveRowAtIndexPath:toIndexPath:                   | ce_moveRowAtIndexPath:toIndexPath:                   |
+| indexPathForSelectedRow:                          | ce_indexPathForSelectedRow:                          |
+| indexPathsForSelectedRows:                        | ce_indexPathsForSelectedRows:                        |
+| selectRowAtIndexPath:animated:scrollPosition:     | ce_selectRowAtIndexPath:animated:scrollPosition:     |
+| deselectRowAtIndexPath:animated:                  | ce_deselectRowAtIndexPath:animated:                  |
+| dequeueReusableCellWithIdentifier:forIndexPath:   | ce_dequeueReusableCellWithIdentifier:forIndexPath:   |
+
+## 4. Refresh tableView data source
+It is common for tableView to refresh data source periodically (ex. pull to refresh). While the data souce is refeshing, at the mean time, CETableViewADHelper is also need to clean previous cached ADs
 ```objc
 - (void)refresh
 {
     [self.pullToRefreshView startLoading];
-    [_streamHelper cleanADs];
     [self prepareDataSources];
+    [_adHelper cleanAds];
     [self.tableView reloadData];
-    [_streamHelper updateVisiblePosition:self.tableView];
     [self.pullToRefreshView finishLoading];
 }
 
@@ -236,4 +129,4 @@ It is normal to have data source refresh mechanism in stream view (ex. pull to r
 ***
 More information
 
-- [API reference]()
+- [API reference](api-reference.md)

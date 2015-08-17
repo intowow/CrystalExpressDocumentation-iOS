@@ -1,132 +1,60 @@
 ## Requirements
-- Content AD is designed for scrollView page.
+- CEContentADHelper is designed for scrollView page
 
-## Init ContentADHelper
-Pair ContentADHelper with your streams, so initialize it in your stream viewController (or the class you init/manage detail page viewControllers), then assign it to detail page viewController.
+## 1. Initialize CEContentADHelper
+- We provide CEContentADHelper to simplify content AD integration, through CEContentADHelper we can request/manage content AD
+- While loading content page, setup a `UIView adWrapperView` as AD position, and pass it as a parameter while request AD
+    - This `adWrapperView` need to set origin.y as AD position, set size width, the AD will place in the center of `adWrapperView`
+- When initialize CEContentADHelper, set the AD placement name, scrollView and the content unique identifier
+
 ```objc
-- (instancetype)init
+- (void)loadContentWithId:(NSString *)contentId
 {
-    self = [super init];
-    if (self) {
-        .....
+    // setup page content
+      .....
 
-        // replace @"CONTENT" with your own placement name
-        _contentADHelper = [[ContentADHelper alloc] initWithPlacement:@"CONTENT"];
+    // content AD
+    _adWrapperView = [[UIView alloc] initWithFrame:CGRectMake(0, scrollHeight, self.view.bounds.size.width, 0)];
 
-        // set pulldown animation delegate to the right detail page viewController
-        __weak typeof(self) weakSelf = self;
-        [_contentADHelper setOnPullDownAnimation:^(UIView *view) {
-            [[weakSelf.contentVCs objectAtIndex:weakSelf.curIndex] onPullDownAnimationWithAD:view];
-        }];
+    // setup page content below AD
+      .....
 
-        // preroll to preapre 1 content AD in advance
-        [_contentADHelper preroll];
+    // you might need to set ScrollView content Size
+    [_scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, scrollHeight)];
 
-        .....
-    }
-    return self;
+    // setup content AD
+    [self setupContentAdWithAdView:_adWrapperView contentId:contentId];
+}
+
+- (void)setupContentAdWithAdView:(UIView *)adView contentId:(NSString *)contentId
+{
+    _contentADHelper = [CEContentADHelper helperWithPlacement:@"CONTENT" scrollView:_scrollView contentId:contentId];
+
+    // request AD
+    [_contentADHelper loadAdInView:adView];
 }
 ```
 
-Assign contentADHelper to detail page viewController.
-```objc
-DemoContentViewController *newContentVC = [[DemoContentViewController alloc] initWithADHelper:_contentADHelper];
-```
+## 2. Update viewController show/hide from user
+- While viewController is show in front of user, we need to call `onShow` to notify AD to play (ex. at `viewDidAppear`)
+- While viewController is hide from user's view, we need to call `onHide` to notify AD to stop play (ex. at `viewDidDisappear`)
 
-## Request Content AD
-Request content AD while you load detail page content with article unique id.
-```objc
-- (void)loadContentWithId:(NSString *)articleId
-{
-    .....
-    // You may want a wrapper view on adView to add AD margin
-    _adWrapperView = [[UIView alloc] init];
-    _contentADView = [_contentADHelper requestADWithContentId:articleId];
-    [_contentADHelper setScrollOffsetWithKey:articleId offset:currentScrollOffset];
-    if (_contentADView) {
-        CGFloat horMargin = (self.view.bounds.size.width - (_contentADView.bounds.size.width + 2*AD_MARGIN))/2.0f;
-        [_adWrapperView setFrame:CGRectMake(horMargin, currentScrollOffset, _contentADView.bounds.size.width + 2*AD_MARGIN, _contentADView.bounds.size.height + 2*AD_MARGIN)];
-        horMargin = (_adWrapperView.bounds.size.width - _contentADView.bounds.size.width)/2.0f;
-        [_contentADView setFrame:CGRectMake(horMargin, AD_MARGIN, _contentADView.bounds.size.width, _contentADView.bounds.size.height)];
-        [_adWrapperView addSubview:_contentADView];
-        _adOffset = currentScrollOffset;
-        currentScrollOffset += _adWrapperView.bounds.size.height;
-        [_scrollView addSubview:_adWrapperView];
-
-    } else {
-        // add default offset if there's no content AD
-        currentScrollOffset += 10;
-    }
-
-    // Here's the view under content AD
-    _theViewUnderContentAd = [[UIView alloc] init];
-    .....
-}
-```
-
-## onPullDownAnimation
-- `onPullDownAnimationWithAD:` will only be called with a specific AD format (Card-Video-PullDown)
-
-![content pulldown AD](../images/content_pulldown.jpg)
-
-- When the AD is clicked by user, the engage module will extend from the AD view's bottom. Therefore, scrollView should update the views under content AD for the animation.
-```objc
-- (void)onPullDownAnimationWithAD:(UIView *)adView
-{
-    if (adView == _articleADView) {
-        CGRect frame = [_adWrapperView frame];
-        frame.size.height = adView.bounds.size.height + 2*AD_MARGIN;
-        [_adWrapperView setFrame:frame];
-
-        frame = [_theViewUnderContentAd frame];
-        frame.origin.y = _adOffset + _adWrapperView.bounds.size.height;
-        [_theViewUnderContentAd setFrame:frame];
-
-        CGFloat finalContentOffset = _adOffset + adView.bounds.size.height + _theViewUnderContentAd.bounds.size.height;
-        [_scrollView setContentSize:CGSizeMake(self.view.bounds.size.width, finalContentOffset)];
-    }
-}
-```
-
-## Hook viewController & scrollView events
-### Update scrollView state to allow helper check AD start/stop
 ```objc
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_contentADHelper checkAdStartWithKey:_articleId ScrollViewBounds:[_scrollView bounds]];
+    [_contentADHelper onShow];
     .....
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    // give CGRectZero to force content AD stop
-    [_contentADHelper checkAdStartWithKey:_articleId ScrollViewBounds:CGRectZero];
+    [_contentADHelper onHide];
     .....
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (decelerate == NO) {
-        [_contentADHelper checkAdStartWithKey:_articleId ScrollViewBounds:[scrollView bounds]];
-    }
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [_contentADHelper checkAdStartWithKey:_articleId ScrollViewBounds:[scrollView bounds]];
-}
-```
-
-### Update scrollView visible bounds
-```objc
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [_contentADHelper updateScrollViewBounds:[scrollView bounds] withKey:_articleId];
 }
 ```
 ***
-More information
+More Information
 
-- [API reference]()
+- [API reference](api-reference.md)
