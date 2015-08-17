@@ -104,4 +104,27 @@ The AD format that Open Splash support is **Splash series**
     NSLog(@"fail to request OPEN_SPLASH, reason:%@", error);
     [self prepareContentViewController];
 }
+
+// splash ad viewcontroller is going to dismiss from screen
+- (void)CESplashAdWillDismissScreen:(SplashADInterfaceViewController *)vc
+{
+}
+
+// splash ad viewcontroller is goint to present on screen
+- (void)CESplashAdWillPresentScreen:(SplashADInterfaceViewController *)vc
+{
+
+}
+
+// splash ad viewcontroller did dismiss from screen
+- (void)CESplashAdDidDismissScreen:(SplashADInterfaceViewController *)vc
+{
+}
+
+// splash ad viewcontroller did present to screen
+- (void)CESplashAdDidPresentScreen:(SplashADInterfaceViewController *)vc
+{
+    // prepare your app view controller
+    ....
+}
 ```
