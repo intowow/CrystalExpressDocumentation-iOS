@@ -11,7 +11,7 @@
 <plist version="1.0">
 <dict>
   <key>Crystal_Id</key>
-  <string>2a317bd038f742a082ee284b478a8e37</string>
+  <string>crystalidforiostestingdonotuseit</string>
 </dict>
 </plist>
 ```
