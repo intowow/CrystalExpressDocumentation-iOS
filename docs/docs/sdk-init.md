@@ -19,5 +19,5 @@ In your application delegate's `application:didFinishLaunchingWithOptions:` meth
 
 ```
 - Set `initWithVerboseLog:(BOOL)` will enable/disable the debug log in console
-- Set `isTestMode:(BOOL)` will control whether to init the SDK in [TEST]() mode
+- Set `isTestMode:(BOOL)` will control whether to init the SDK in [TEST mode](test-mode.md)
 

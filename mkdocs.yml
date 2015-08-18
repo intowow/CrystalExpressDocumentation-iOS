@@ -20,6 +20,7 @@ pages:
     - 'Register background fetch': 'docs/register-background-fetch.md'
     - 'AD preview': 'docs/ad-preview.md'
     - 'AD event callback': 'docs/ad-event-callback.md'
+  - 'Test mode': 'docs/test-mode.md'
 - Suggested placements:
   - 'Open Splash': 'docs/open-splash-ad.md'
   - 'Interstitial Splash': 'docs/interstitial-ad.md'
