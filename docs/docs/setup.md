@@ -32,7 +32,7 @@ pod "CrystalExpressSDK", '~> 1.3'
     - [CrystalExpressSDK-1.3.10](https://s3-ap-northeast-1.amazonaws.com/intowow/ios_manual_sdk/CrystalExpressSDK-1.3.10.zip)
 2. Add source files to your project
 3. Make sure you have the following frameworks added in Build phases
-    - Securty.framework
+    - Security.framework
     - CFNetwork.framework
     - MessageUI.framework
     - MobileCoreServices.framework
