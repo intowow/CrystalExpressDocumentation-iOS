@@ -52,3 +52,13 @@ pod "CrystalExpressSDK", '~> 1.3'
 
 ## Change Crystal id
 - After setup SDK, change Crystal_Id in CrystalExpress.plist into your app's crystal_id
+
+## Allow Http connection
+- After xcode7 (iOS9 SDK), it only allow https connections, so we need to add the following settings in your app Info.plist to pass the Https check.
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+     <key>NSAllowsArbitraryLoads</key>
+     <true/>
+</dict>
+```
