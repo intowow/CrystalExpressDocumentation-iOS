@@ -55,6 +55,7 @@ pod "CrystalExpressSDK", '~> 1.3'
 
 ## Allow Http connection
 - After xcode7 (iOS9 SDK), it only allow https connections, so we need to add the following settings in your app Info.plist to pass the Https check.
+- Since we don't know what AD's click through url is, we need to allow arbitrary loads for Http connection.
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
