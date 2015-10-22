@@ -21,6 +21,7 @@ _adHelper = [CETableViewADHelper helperWithTableView:self.tableView viewControll
 // 3. stop AD play at NSIndexPath
 [_adHelper stopAdAtIndexPath:indexPath];
 ```
+---
 
 ### UI setting control
 `CETableViewADHelper.h` provides the following APIs to adjust UI for stream AD
@@ -64,4 +65,26 @@ _adHelper = [CETableViewADHelper helperWithTableView:self.tableView viewControll
  */
 - (void)setAdCellCustomizedBlock:(void (^)(UITableViewCell *adCell))customizedAdCellBlock;
 ```
+---
 
+### Put road block Ad in stream
+1. Please contact Intowow to do the road block Ad setting and the Ad placement configration.
+2. Initialize `CETableViewADHelper` with **`adTag`** method
+    - `adTag` is a string and also an identifier for the stream
+
+```objc
+  // use adTag instead of placement string
+  _adHelper = [CETableViewADHelper helperWithTableView:self.tableView viewController:self adTag:adTag];
+```
+
+---
+
+### Disable stream Ad in runtime
+- `CETableViewADHelper` can disable loading Ad (also clean the current Ads) by calling the following API.
+
+```objc
+/**
+ *  disable load AD
+ */
+- (void)disableAd;
+```
