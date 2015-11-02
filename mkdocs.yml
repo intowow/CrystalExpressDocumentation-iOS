@@ -16,6 +16,7 @@ pages:
     - 'Configure splash AD': 'docs/advanced-splash-ad.md'
     - 'Configure stream AD': 'docs/advanced-stream-ad.md'
     - 'Request card format AD': 'docs/card-format-ad.md'
+    - 'Audience targeting': 'docs/audience-targeting.md'
   - 'SDK integration':
     - 'Register background task': 'docs/register-background-task.md'
     - 'Register background fetch': 'docs/register-background-fetch.md'
