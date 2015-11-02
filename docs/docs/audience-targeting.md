@@ -18,3 +18,17 @@ To enable support AD audience targeting, you need to set user tags with the foll
 ### Best practice
 - Set the user tags as early as possible, SDK will have more time to prepare the right AD.
 - Avoid changing user tags in runtime oftenly, it might decrease the fill rate of ADs.
+- AD will only show if the user's tags are subset of AD's tags, ex:
+
+```
+AD tags: [
+  "gender:m",
+  "age:20-30",
+]
+
+User tags: [
+  "gender:m",
+  "age:20-30",
+  "interest:sport",
+]
+```
