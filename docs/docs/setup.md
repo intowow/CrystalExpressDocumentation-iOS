@@ -9,7 +9,7 @@
 - We strongly recommand you to use Cocoapods to integrate with CrystalExpress.
 - Add the following code in Podfile
 ```
-pod "CrystalExpressSDK", '~> 1.5'
+pod "CrystalExpressSDK", '~> 1.6'
 ```
 - `pod update` or `pod install`
 - Open workspace that pod generate for you, you're ready to use CrystalExpress
@@ -17,7 +17,7 @@ pod "CrystalExpressSDK", '~> 1.5'
 
 ### Manual integration
 1. In project build phases "Link Binary With Libraries", add CrystalExpressSDK-x.x.x.a static library
-    - [CrystalExpressSDK-1.5.6](https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/ios/manual/global/CrystalExpressSDK-1.5.6.zip)
+    - [CrystalExpressSDK-1.6.2](https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/ios/manual/global/CrystalExpressSDK-1.6.2.zip)
 2. Add source files to your project
 3. Make sure you have the following frameworks added in Build phases
     - Security.framework
@@ -45,4 +45,16 @@ pod "CrystalExpressSDK", '~> 1.5'
      <key>NSAllowsArbitraryLoads</key>
      <true/>
 </dict>
+```
+
+##Whitelist Specific Apps
+- After xcode7 (iOS9 SDK), if you want to launch third party App from your App, you need to add the following settings in your app Info.plist that can allow to check specific app installed or open brower, e.g., we want to open the facebook app with url "fb://profile/1493535890869". You can get more detail by checking https://developer.apple.com/videos/wwdc/2015/?id=703.
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+		<string>fb</string>
+		<string>twitter</string>
+		<string>youtube</string>
+		<string>...</string>
+</array>
 ```
