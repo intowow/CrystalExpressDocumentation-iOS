@@ -71,7 +71,7 @@ For example, the origin method is:
 replace it into:
 
 ```objc
-[self.tableView ce_selectRowAtIndexPath:myIndexPath];
+[self.tableView ce_selectRowAtIndexPath:myIndexPath animated:animated scrollPosition:scrollPosition];
 ```
 
 These methods are just the same with normal `UITableView` method, but to adjust `NSIndexPath` based on the inserted ADs position
